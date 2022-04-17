@@ -16,6 +16,8 @@ const item__img = document.querySelector(".item__img");
 const image = document.createElement("img");
 item__img.appendChild(image);
 
+
+
 // recuperation des elementpar leur id et affichage
 async function getArticleById() {
     await fetch("http://localhost:3000/api/products/" + idproduit)
@@ -39,8 +41,10 @@ async function getArticleById() {
 }
 getArticleById()
     // ajouter un produit au panier
+let alerteAchat = "ajout au panier";
 let addToCarta = document.getElementById("addToCart");
 addToCarta.addEventListener("click", addElement);
+
 // fonction qui permet de trier les couleurs et id
 function findElement(item) {
     for (let i = 0; i < items.length; i++) {
@@ -69,6 +73,7 @@ function addElement() {
         } else {
 
             items.push(item)
+            alert(alerteAchat)
 
         }
         // tester si  l items qu'on a ajouter il y est deja donc x2 meme id meme couleurs true ou false si non executer ligne 53 si oui  il faut incrementer la quantite du produit qui match dans items

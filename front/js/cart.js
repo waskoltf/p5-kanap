@@ -1,6 +1,8 @@
 // recuperer les elements du panier
 let items = JSON.parse(localStorage.getItem("items"));
-// console.log(items);
+// console.log(1)
+// console.log(items)
+
 
 
 async function getArticles() {
@@ -8,17 +10,26 @@ async function getArticles() {
     return response.json();
 
 }
-let articles = await getArticles();
-// console.log(articles);
+let articles = await getArticles()
+
+
+function getArticleId(id) {
+
+    for (let i = 0; i < articles.length; i++) {
+
+
+        if (articles[i]._id === id) {
+            return articles[i];
+        }
+
+    }
+
+}
 
 
 
 
-
-
-
-
-if (null === items) {
+if (!items) {
     const titleCartH1 = document.querySelector("h1");
 
     titleCartH1.innerHTML = "Votre panier est vide !";
@@ -44,8 +55,9 @@ if (null === items) {
         // insertion de l'image(produit)
         let productImg = document.createElement("img");
         productDivImg.appendChild(productImg);
-        productImg = articles[i].imageUrl
-        console.log(productImg);
+        productImg.src = getArticleId(items[i][0]).imageUrl;
+        // console.log(productImg);
+
 
 
 
@@ -96,7 +108,7 @@ if (null === items) {
         qtySetting.appendChild(qtyInput);
         qtyInput.setAttribute("type", "number");
         qtyInput.className = "itemQuantity";
-        qtyInput.setAttribute("name", "itemQuantity")
+        qtyInput.setAttribute("name", "itemQuantity");
         qtyInput.setAttribute("min", "1");
         qtyInput.setAttribute("max", "100");
 
@@ -118,17 +130,4 @@ if (null === items) {
     }
 
 
-
 }
-
-
-
-
-
-// // recuperer les elements
-// const item__title = document.getElementById("title");
-// const item__price = document.getElementById("price");
-// const item_description = document.getElementById("description");
-// const item__color = document.getElementById("colors");
-// const item__img = document.querySelector(".item__img");
-// const image = document.createElement("img");

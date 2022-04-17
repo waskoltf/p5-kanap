@@ -29,6 +29,11 @@ function getArticleId(id) {
 
 
 
+
+
+
+
+
 if (!items) {
     const titleCartH1 = document.querySelector("h1");
 
@@ -130,4 +135,17 @@ if (!items) {
     }
 
 
+
 }
+
+
+
+
+
+// // recuperer les elements
+// const item__title = document.getElementById("title");
+// const item__price = document.getElementById("price");
+// const item_description = document.getElementById("description");
+// const item__color = document.getElementById("colors");
+// const item__img = document.querySelector(".item__img");
+// const image = document.createElement("img");

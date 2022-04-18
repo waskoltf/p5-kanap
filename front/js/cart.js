@@ -4,7 +4,6 @@ let items = JSON.parse(localStorage.getItem("items"));
 // console.log(items)
 
 
-
 async function getArticles() {
     let response = await fetch("http://localhost:3000/api/products");
     return response.json();
@@ -25,12 +24,6 @@ function getArticleId(id) {
     }
 
 }
-
-
-
-
-
-
 
 
 
@@ -64,8 +57,6 @@ if (!items) {
         // console.log(productImg);
 
 
-
-
         // creation de la div pour la content
         let productItemContent = document.createElement("div");
         productArticle.appendChild(productItemContent);
@@ -81,17 +72,18 @@ if (!items) {
         // creation du titre h2 et insertion
         let titleCartDescription = document.createElement("h2");
         cartDescription.appendChild(titleCartDescription);
-        titleCartDescription.innerHTML = items[i];
+        titleCartDescription.innerHTML = getArticleId(items[i][0]).name;
+        // console.log(getArticleId(items[i][0]))
 
         // creation de la couleur et insertion
         let pColor = document.createElement("p");
         cartDescription.appendChild(pColor);
-        pColor.innerHTML = items[i];
+        pColor.innerHTML = getArticleId(items[i][0]).colors;
 
-        // creation de la couleur et insertion
+        // creation du prix et insertion
         let pPrice = document.createElement("p")
         cartDescription.appendChild(pPrice);
-        pPrice.innerHTML = items[i];
+        pPrice.innerHTML = getArticleId(items[i][0]).price + "€";
 
         // creation de la div content settings
         let contentSettings = document.createElement("div");
@@ -110,12 +102,16 @@ if (!items) {
 
         //  insertion input
         let qtyInput = document.createElement("input");
+        const quantity = document.querySelector("#quantity");
         qtySetting.appendChild(qtyInput);
+        qtyInput.value = getArticleId(items[i][0]).quantity;
         qtyInput.setAttribute("type", "number");
         qtyInput.className = "itemQuantity";
         qtyInput.setAttribute("name", "itemQuantity");
         qtyInput.setAttribute("min", "1");
         qtyInput.setAttribute("max", "100");
+        console.log(getArticleId(items[i][0]))
+        console.log(qtyInput.value)
 
 
         // insertion du cart item content settings(div)

@@ -55,7 +55,7 @@ function findElement(item) {
     }
     return undefined;
 }
-
+let qty = quantity.value;
 // fonction qui permet d'ajouter un article avec quantiter
 function addElement() {
     const quantity = document.querySelector("#quantity");
@@ -70,10 +70,12 @@ function addElement() {
         let found = findElement(item);
         if (found != undefined) {
             found[1] = parseInt(found[1]) + parseInt(qty);
+            alert(alerteAchat)
+
         } else {
 
             items.push(item)
-            alert(alerteAchat)
+                // alert(alerteAchat)
 
         }
         // tester si  l items qu'on a ajouter il y est deja donc x2 meme id meme couleurs true ou false si non executer ligne 53 si oui  il faut incrementer la quantite du produit qui match dans items
